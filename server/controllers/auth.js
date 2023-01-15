@@ -34,6 +34,24 @@ export const register = async (req, res) => { // This has to be async/asynchrono
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);// http status codes(201 Created) https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
     } catch (error){
-        res.status(500).json({error: error.message});
+        res.status(500).json({error: error.message}, 'Node: REGISTER USER erroe (server > controllers> auth.js)');
     }
 };
+
+/* Node LOGGING IN */
+export const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({email: email}) //He going to use Mongoose to try to find the one that has the specified email
+        if (!user) return res.status(400).json({msg: "User dons not exist."})
+
+        const isMatch = await bcrypt.compare(password, user.password); //So use the samme salt compare whether those two turned out to be the same hash
+        if (!isMatch) return res.status(400).json({msg: "Invalid credentials."})
+        //Use  jwt tokens
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);//jwt tokens so we're going to sign this with the ID  the user_ID and we're going to pass in a secret string
+        delete user.password; //We're going to delete the password so it doesnt't get send back to the front nd
+        res.status(200).json({token, user});
+    } catch (error) {
+        res.status(500).json({error: error.message},'Node LOGGING IN error (server > controllers> auth.js)');
+    }
+}
