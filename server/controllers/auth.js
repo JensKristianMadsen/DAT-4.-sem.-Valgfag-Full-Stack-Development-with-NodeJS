@@ -2,7 +2,7 @@ import bcrypt from "bcrypt"; //Encrpt our password
 import jwt from "jsonwebtoken";// from Json web token so this will give me a way to send a user a web token that they can use for authorization
 import User from "../models/User.js";
 
-/* Node: REGISTER USER */
+/* Node: REGISTER USER Authentication*/
 export const register = async (req, res) => { // This has to be async/asynchronous because we're going to be calling mongooe database
     try {
        const {
@@ -38,7 +38,7 @@ export const register = async (req, res) => { // This has to be async/asynchrono
     }
 };
 
-/* Node LOGGING IN */
+/* Node LOGGING IN  Authentication*/
 export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
