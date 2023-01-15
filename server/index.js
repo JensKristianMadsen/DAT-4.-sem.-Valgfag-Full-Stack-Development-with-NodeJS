@@ -34,6 +34,10 @@ const storage = multer.diskStorage({  // So this is how you can save your files 
 });
 const upload = multer({ storage }); // So that wil help us save it and anytimewe need to upload a file we're going to be using this variable
 
+/* Node:  ROUTES WITH FILES (Authentication)
+
+
+
 /* Node:  MONGOOSE SETUP */
 const PORT = process.env.PORT || 8888;
 mongoose.connect(process.env.MONGO_URL,{
