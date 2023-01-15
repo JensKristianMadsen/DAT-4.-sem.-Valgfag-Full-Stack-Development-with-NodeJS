@@ -33,3 +33,12 @@ const storage = multer.diskStorage({  // So this is how you can save your files 
     }
 });
 const upload = multer({ storage }); // So that wil help us save it and anytimewe need to upload a file we're going to be using this variable
+
+/* Node:  MONGOOSE SETUP */
+const PORT = process.env.PORT || 8888;
+mongoose.connect(process.env.MONGO_URL,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(() => {
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`)) //Template literals are sometimes informally called template strings, because they are used most commonly for string interpolation (to create strings by doing substitution of placeholders). However, a tagged template literal may not result in a string; it can be used with a custom tag function to perform whatever operations you want on the different parts of the template literal.
+}).catch((error) => console.log(`${error} did not connect`));
