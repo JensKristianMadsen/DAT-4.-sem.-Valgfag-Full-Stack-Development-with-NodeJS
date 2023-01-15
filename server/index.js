@@ -8,6 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";                                // These two wil allow us to properly set the paths, when i configure directories later on
 import { fileURLToPath } from "url";
+import { register} from "./controllers/auth.js";
 
 /* Node: CONFIGURATIONS */                                    // so this  include all the middleware configurations as well as different package configurations. middleware is basically something that runs in between different requests basically, little like basically functions that run in between different things 
 const __filename = fileURLToPath(import.meta.url);      //So this configuration is so we can grab the dile URL and it's specifically when you use the modules f.eks (package.json create "type": "module" ) this configuration so we grab we can use directory name which i going to create (const __dirname = path.dirname(__filename);) this is only when you use the type modules
@@ -34,7 +35,8 @@ const storage = multer.diskStorage({  // So this is how you can save your files 
 });
 const upload = multer({ storage }); // So that wil help us save it and anytimewe need to upload a file we're going to be using this variable
 
-/* Node:  ROUTES WITH FILES (Authentication)
+/* Node:  ROUTES WITH FILES (Authentication = auth)*/
+app.post("/auth/register", upload.single("picture"), register); //API ("/auth/register") So typically you have a route and this is the route that we're going to hit. From there we're going to use a middleware( upload.single("picture") upload our picture locally into the public/assets folder. logic is (register) save into our database and all the dunctionalty relevant
 
 
 
