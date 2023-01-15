@@ -42,3 +42,7 @@ const UserSchema = new mongoose.Schema( //So now this is kind of close to what y
 );
 
 const User = mongoose.model("User", UserSchema)
+export default User;
+//So when you create a mongoose mode you ,
+//want to create this Mongoose Schema from line 3 to 42
+//And then we pass it into mongoose.model  and we pass it into user
