@@ -9,6 +9,7 @@ import morgan from "morgan";
 import path from "path";                                // These two wil allow us to properly set the paths, when i configure directories later on
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
 import { register} from "./controllers/auth.js";
 
 /* Node: CONFIGURATIONS */                                    // so this  include all the middleware configurations as well as different package configurations. middleware is basically something that runs in between different requests basically, little like basically functions that run in between different things 
@@ -36,11 +37,12 @@ const storage = multer.diskStorage({  // So this is how you can save your files 
 });
 const upload = multer({ storage }); // So that wil help us save it and anytimewe need to upload a file we're going to be using this variable
 
-/* Node:  ROUTES WITH FILES (Authentication = auth)*/
+/* Node:  ROUTES WITH FILES */
 app.post("/auth/register", upload.single("picture"), register); //API ("/auth/register") So typically you have a route and this is the route that we're going to hit. From there we're going to use a middleware( upload.single("picture") upload our picture locally into the public/assets folder. logic is (register) save into our database and all the dunctionalty relevant
 
 /* Node: ROUTES */
-app.use("/auth", authRoutes); //
+app.use("/auth", authRoutes); 
+app.use("/users", userRoutes);
 
 
 /* Node:  MONGOOSE SETUP */
