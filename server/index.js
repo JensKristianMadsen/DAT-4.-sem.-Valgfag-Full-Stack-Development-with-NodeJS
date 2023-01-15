@@ -23,4 +23,13 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, 'public/assets'))); //So what this is right here is doing is going to set the directory of where we keep our Assets in our case it be the images that i store so we're going to store this locally
 
-
+/* Node: FILE STORAGE */
+const storage = multer.diskStorage({  // So this is how you can save your files so anytime someone uploads a file onto your website then it's going to say destination it's going to be saved into this particular folder 
+    destination: function (req, file, cb) {
+        cb(null, "public/assets");
+    },
+    filename: function (req, file, cb) {//https://github.com/expressjs/multer
+        cb(null, file.originalname);// So a lot of these configurations are coming from the package instructions. So basically i got all of this information from the github repo of malter 
+    }
+});
+const upload = multer({ storage }); // So that wil help us save it and anytimewe need to upload a file we're going to be using this variable
