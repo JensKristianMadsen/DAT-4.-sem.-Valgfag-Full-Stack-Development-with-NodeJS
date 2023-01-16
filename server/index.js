@@ -14,6 +14,9 @@ import postRoutes from "./routes/posts.js";
 import { register} from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js";
 import { verifyToken } from "./middleware/auth.js";
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import {users, posts } from "./data/index.js";
 
 
 /* Node: CONFIGURATIONS */                                    // so this  include all the middleware configurations as well as different package configurations. middleware is basically something that runs in between different requests basically, little like basically functions that run in between different things 
@@ -59,4 +62,10 @@ mongoose.connect(process.env.MONGO_URL,{
     useUnifiedTopology: true,
 }).then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`)) //Template literals are sometimes informally called template strings, because they are used most commonly for string interpolation (to create strings by doing substitution of placeholders). However, a tagged template literal may not result in a string; it can be used with a custom tag function to perform whatever operations you want on the different parts of the template literal.
-}).catch((error) => console.log(`${error} did not connect`));
+
+/*Node: ADD DATA ONE TIME */
+ /*   User.insertMany(users);
+    Post.insertMany(posts);*/
+
+})
+.catch((error) => console.log(`${error} did not connect`));

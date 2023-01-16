@@ -2,7 +2,7 @@ import express from "express";
 import {
     getUser,
     getUserFriends,
-    addRemoveFriends,
+    addRemoveFriend,
 } from "../controllers/users.js";
 import { verifyToken} from "../middleware/auth.js";
 
@@ -17,6 +17,6 @@ router.get("/:id/friends", verifyToken, getUserFriends);
 
 
 /* UPDATE */
-router.patch("/:id/friendId", verifyToken, addRemoveFriends); // Just note this is more like faccebok where you have friends you have a friend list you can remove them
+router.patch("/:id/friendId", verifyToken, addRemoveFriend); // Just note this is more like faccebok where you have friends you have a friend list you can remove them
 
 export default router;

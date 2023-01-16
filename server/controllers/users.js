@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User from "../models/User.js";
 
 /*Node: Read */
 
@@ -41,6 +41,8 @@ export const addRemoveFriend = async (req, res) => {
 
         if (user.friends.includes(friendId)) { //We're going to see if the friend id is included in the main user's friend's id 
             user.friends = user.friends.filter((id) => id !== friendId);//if so we make sure they are removed, if the friend id is alreadypart of the main user's friends list we removed
+            friend.friends = friend.friends.filter((id) => id !==id);
+            
         }else {//If they're not included we'er gonna add them to the friend list by doing
             user.friends.push(friendId);
             friend.friends.push(id);
@@ -60,4 +62,4 @@ export const addRemoveFriend = async (req, res) => {
     }catch (error) {
         res.status(404).json({ message: error.message},'Node UPDATE addRemoveFriend error (server > controllers> users.js)');
     }
-}
+};

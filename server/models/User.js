@@ -38,7 +38,8 @@ const UserSchema = new mongoose.Schema( //So now this is kind of close to what y
             viewedProfile: Number, 
             impressions: Number,
         
-    },{ timestamps: true} // automatic dates for when it's created when it's updated things like that
+    },
+    { timestamps: true} // automatic dates for when it's created when it's updated things like that
 );
 
 const User = mongoose.model("User", UserSchema)
