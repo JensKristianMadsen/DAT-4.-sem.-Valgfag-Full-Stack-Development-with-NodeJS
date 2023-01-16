@@ -1,6 +1,6 @@
 import User from "../models/User";
 
-/* Read */
+/*Node: Read */
 
 export const getUser = async (req, res) => {
     try{
@@ -8,7 +8,7 @@ export const getUser = async (req, res) => {
         const user = await User.findById(id);
         res.status(200).json(user);
     }catch(error){
-        res.status(404).json({ message: error.message});
+        res.status(404).json({ message: error.message},'Node Read getuser error (server > controllers> users.js)');
     }
 }
 
@@ -28,11 +28,11 @@ export const getUserFriends = async (req, res) =>{
         );
         res.status(200).json(formattedFriends);
     } catch (error) {
-        res.status(404).json({ message: error.message});
+        res.status(404).json({ message: error.message},'Node Read getUserFriends error (server > controllers> users.js)');
     }
 };
 
-/* UPDATE */
+/*Node: UPDATE */
 export const addRemoveFriend = async (req, res) => {
     try {
         const { id, friendId } = req.params;
@@ -58,6 +58,6 @@ export const addRemoveFriend = async (req, res) => {
         );
         res.status(200).json(formattedFriends);
     }catch (error) {
-        res.status(404).json({ message: error.message});
+        res.status(404).json({ message: error.message},'Node UPDATE addRemoveFriend error (server > controllers> users.js)');
     }
 }
