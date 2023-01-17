@@ -1,7 +1,7 @@
-//This is doing is that when you import different files into other files you can just start from source, that means when we code it up it's
+
 {
     "compilerOptions": {
-        "baseUrl": "src"
+      "baseUrl": "src"
     },
     "include": ["src"]
-}
+  }

@@ -15,7 +15,7 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         setMode: (state) => { // replace the object as opposed to dirextly modifying the state
-            state.mode = state,mode === "light" ? "dark" : "light";
+            state.mode = state.mode === "light" ? "dark" : "light";
         },
         setLogin: (state, action) => { //action(they call it payload but it's basically just the params or arguments for the function)
             state.user = action.payload.user;
