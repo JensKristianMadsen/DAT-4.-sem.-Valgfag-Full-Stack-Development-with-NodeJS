@@ -64,7 +64,7 @@ mongoose.connect(process.env.MONGO_URL,{
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`)) //Template literals are sometimes informally called template strings, because they are used most commonly for string interpolation (to create strings by doing substitution of placeholders). However, a tagged template literal may not result in a string; it can be used with a custom tag function to perform whatever operations you want on the different parts of the template literal.
 
 /*Node: ADD DATA ONE TIME */
- /*   User.insertMany(users);
+   /* User.insertMany(users);
     Post.insertMany(posts);*/
 
 })
