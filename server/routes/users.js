@@ -11,12 +11,12 @@ import { verifyToken} from "../middleware/auth.js";
 
 const router = express.Router();
 
-/* READ */
+/*Node: READ */
 router.get("/:id", verifyToken, getUser);// query string that will grab the particular ID
 router.get("/:id/friends", verifyToken, getUserFriends);
 
 
-/* UPDATE */
+/*Node: UPDATE */
 router.patch("/:id/friendId", verifyToken, addRemoveFriend); // Just note this is more like faccebok where you have friends you have a friend list you can remove them
 
 export default router;
