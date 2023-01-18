@@ -17,6 +17,6 @@ router.get("/:id/friends", verifyToken, getUserFriends);
 
 
 /*Node: UPDATE */
-router.patch("/:id/friendId", verifyToken, addRemoveFriend); // Just note this is more like faccebok where you have friends you have a friend list you can remove them
+router.patch("/:id/:friendId", verifyToken, addRemoveFriend); // Just note this is more like faccebok where you have friends you have a friend list you can remove them
 
 export default router;

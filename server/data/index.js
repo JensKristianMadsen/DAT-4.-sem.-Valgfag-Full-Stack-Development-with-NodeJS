@@ -51,7 +51,7 @@ export const users = [
     email: "someguy@gmail.com",
     password: "da39a3ee5e6b4b0d3255bfef95601890afd80709",
     picturePath: "p4.jpeg",
-    friends: [],
+    friends: [2],
     location: "Canada, CA",
     occupation: "Data Scientist Hacker",
     viewedProfile: 45468,
