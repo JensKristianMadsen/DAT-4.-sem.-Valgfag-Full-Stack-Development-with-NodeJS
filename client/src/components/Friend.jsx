@@ -22,11 +22,12 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const isFriend = friends.find((friend) => friend._id === friendId);
 
   const patchFriend = async () => {
-    const response = await fetch(`http://localhost:8080/users/${_id}/${friendId}`,
+    const response = await fetch(
+      `http://localhost:8080/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {
-      Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       }
@@ -37,13 +38,13 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
 
   return (
     <FlexBetween>
-        <FlexBetween gap="1rem">
+      <FlexBetween gap="1rem">
         <UserImage image={userPicturePath} size="55px" />
         <Box
-          onClick={() => {
-            navigate(`/profile/${friendId}`);// UEL does update with react router but the components do not re-render now, but is a workaround to it but esy around stakoverflor is not a fan of but it does the job, it would go to the next users page and then well refresh the page whit (navigate(0);)
+          onClick={() => { 
+            navigate(`/profile/${friendId}`); // UEL does update with react router but the components do not re-render now, but is a workaround to it but esy around stakoverflor is not a fan of but it does the job, it would go to the next users page and then well refresh the page whit (navigate(0);)
             navigate(0);
-             }}
+          }}
         >
           <Typography
             color={main}
@@ -57,8 +58,8 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
             }}
           >
             {name}
-             </Typography>
-            <Typography color={medium} fontSize="0.75rem">
+          </Typography>
+          <Typography color={medium} fontSize="0.75rem">
             {subtitle}
           </Typography>
         </Box>
